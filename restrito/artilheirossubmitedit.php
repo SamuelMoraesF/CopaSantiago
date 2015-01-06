@@ -6,11 +6,13 @@ $gols = $_GET['gols'];
 
 $time = $_GET['time'];
 
-$id = $_GET['id'];
+$id = $_GET['idedit'];
 
 include 'header.php';
 
-$sql = "UPDATE `nova99_K0fnE`.`artilheiro` SET `id` = NULL ,`artilheiro` = '{$artilheiro}', `gols` = '{$gols}', `time` = '{$time}' WHERE artilheiro`.`id` ={$id};";
+$sql = "UPDATE `".$dbname."`.`artilheiro` SET `artilheiro` = '{$artilheiro}', `gols` = '{$gols}', `time` = '{$time}' WHERE `artilheiro`.`id` = {$id};";
+
+//$sql = "UPDATE `".$dbname."`.`artilheiro` SET `artilheiro` = '{$artilheiro}', `gols` = '{$gols}', `time` = '{$time}' WHERE artilheiro`.`id` ={$id};";
 
 mysql_query($sql);
 

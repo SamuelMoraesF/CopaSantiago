@@ -6,7 +6,7 @@ $id = $_GET['id'];
 
 if($id != "") {
 
-$sql = "DELETE FROM `nova99_K0fnE`.`jogos` WHERE `jogos`.`id` = ".$id." LIMIT 1;";
+$sql = "DELETE FROM `".$dbname."`.`jogos` WHERE `jogos`.`id` = ".$id." LIMIT 1;";
 
 mysql_query($sql);
 

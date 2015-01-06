@@ -15,6 +15,7 @@ echo '
       <th>Slug</th>
       <th>Grupo</th>
       <th>Abreviação</th>
+      <th>Editar</th>
       <th>Apagar</th>
     </tr>
   </thead>';
@@ -40,6 +41,7 @@ echo '
 		echo '<td>'.$slug.'</td>';
 		echo '<td>'.$grupo.'</td>';
 		echo '<td>'.$abr.'</td>';
+		echo '<td><a href="'.$siteurl.'/restrito/timesedit.php?id='.$id.'" class="btn btn-default">Editar</a></td>';
 		echo '<td><a href="'.$siteurl.'/restrito/timesdel.php?id='.$id.'" class="btn btn-danger">Apagar</a></td>';
 		
 		echo '</tr>';

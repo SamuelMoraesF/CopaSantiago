@@ -12,13 +12,9 @@ $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', $time);
 
 include 'header.php';
 
-if (($time != "") && ($grupo != "") && ($abr != "")) {
+$sql = "INSERT INTO `".$dbname."`.`times` (`id`, `time`, `logo`, `slug`, `grupo`, `abr`) VALUES (NULL, '".$time."', 'logo', 'sld', 'aa', 'abr');";
 
-	$sql = "INSERT INTO `nova99_K0fnE`.`times` (`id`, `time`, `logo`, `slug`, `grupo`, `abr`) VALUES (NULL, '".$time."', 'logo', 'sld', 'aa', 'abr');";
-
-	mysql_query($sql);
-
-}
+mysql_query($sql);
 
 echo '<div class="jumbotron"><h1>Time Adicionado</h1>
 <p>O seguinte time foi adicionado:</br></br>

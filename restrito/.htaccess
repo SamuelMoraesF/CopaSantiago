@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Restrito - Copa Santiago"
-AuthUserFile "/home/nova99/.htpasswds/public_html/copasantiago/restrito/passwd"
-require valid-user

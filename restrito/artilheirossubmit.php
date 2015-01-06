@@ -10,7 +10,7 @@ include 'header.php';
 
 if (($artilheiro != "") && ($gols != "") && ($time != "")) {
 
-	$sql = "INSERT INTO `nova99_K0fnE`.`artilheiro` ( `id` , `artilheiro` , `gols` , `time` ) VALUES ( NULL , '".$artilheiro."', '".$gols."', '".$time."' );";
+	$sql = "INSERT INTO `".$dbname."`.`artilheiro` ( `id` , `artilheiro` , `gols` , `time` ) VALUES ( NULL , '".$artilheiro."', '".$gols."', '".$time."' );";
 
 	mysql_query($sql);
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>body {margin-top:60px !important;padding:30px;}form#add-time {width:90% !important;margin:0 auto;margin-top:50px;</style>
+    <style>.jumbotron {padding:40px !important;}body {margin-top:60px !important;padding:30px;}form#add-time {width:90% !important;margin:0 auto;margin-top:50px;</style>
     <title>Acesso Restrito - <?php echo $sitetitle ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo $siteurl ?>/css/bootstrap.min.css" rel="stylesheet">
