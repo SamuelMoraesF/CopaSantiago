@@ -18,9 +18,44 @@ include 'config.php';
       <script src="<?php echo $siteurl ?>/js/html5shiv.js"></script>
       <script src="<?php echo $siteurl ?>/js/respond.min.js"></script>
     <![endif]-->
+    <style>body {padding-top:60px;}
+	.navbar .btn-warning span {
+	    padding-right:10px;
+	}
+    </style>
   </head>
   <body>
   
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=636925102985266&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menutopo">
+        <span class="sr-only">Menu</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Copa Santiago</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="menutopo">
+      <ul class="nav navbar-nav navbar-right" style="padding-right:20px;">
+        <a href="http://www.nova99.com.br/player/player.php" class="btn btn-warning navbar-btn"><span class="glyphicon glyphicon-headphones"></span> Ouvir a Nova 99</a>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
   <header class="header row">
   <div class="col-md-4">
   <img src="http://4.bp.blogspot.com/-AbfeE4SL3c4/UlG4x-FlI0I/AAAAAAAA7W4/s5OVRQ8ocIo/s1600/logo.jpg">
@@ -34,7 +69,7 @@ include 'config.php';
   	<div class="row global">
   		<div class="col-md-6 grupos">
 		  	<h1>Grupo A</h1>
-			<table class="table table-striped grupoa">
+			<div class="table-responsive"><table class="table table-striped grupoa">
 		           <thead>
 			      <tr>
 			         <th class="time">Time</th>
@@ -166,9 +201,9 @@ include 'config.php';
 				}
 			     ?>
 			   </tbody>
-			 </table>
+			 </table></div>
 			 <h1>Grupo B</h1>
-			 	<table class="table table-striped grupob">
+			 	<div class="table-responsive"><table class="table table-striped grupob">
 		           <thead>
 			      <tr>
 			         <th class="time">Time</th>
@@ -305,11 +340,31 @@ include 'config.php';
 			     ?>
 			     
 			   </tbody>
-			 </table>
+			 </table></div>
 			 
 			 <h1>Artilheiros</h1>
 			 
-			 <table class="table table-striped">
+			 <div class="list-group">
+
+			 		<?php $sql = "SELECT * FROM `artilheiro` ORDER BY `gols` DESC";
+				
+					$query = mysql_query($sql);
+				
+					while($sqldata = mysql_fetch_array($query)){
+
+						$sqlinterno = "SELECT * FROM `times` WHERE `id` LIKE '".$sqldata['time']."'";
+				
+						$queryinterno = mysql_query($sqlinterno);
+				
+						$sqlinternod = mysql_fetch_array($queryinterno);
+						$timename = $sqlinternod["time"];
+							
+						echo '<li class="list-group-item"><span class="badge">'.$sqldata['gols'].' Gols</span><b>'.$sqldata['artilheiro'].'</b> - '.$timename.'</li>';
+
+					} ?>
+			</div>
+
+			 <?php /* <div class="table-responsive"><table class="table table-striped">
 			        <thead>
 			          <tr>
 			            <th>Artilheiro</th>
@@ -359,7 +414,7 @@ include 'config.php';
 						}	
 						?>		    
 			        </tbody>
-			      </table>
+			      </table></div> */ ?>
 			      
 			  <div id="comentario">
 			  
@@ -370,7 +425,7 @@ include 'config.php';
 		</div>
 		<div class="col-md-6 jogos">
 			<h1>Jogos</h1>
-			<table class="table table-striped">
+			<div class="table-responsive"><table class="table table-striped">
 			        <tbody>
 			        
 			    <?php
@@ -417,11 +472,11 @@ include 'config.php';
 					
 					echo '<td>'.$nametime1.'</td>';
 					
-					if($aconteceu == '0'){echo '<td>-</td>';}else{echo '<td>'.$gol1.'</td>';};
+					if($aconteceu == '0'){echo '<td><span class="label label-danger">-</span></td>';}else{echo '<td><span class="label label-success">'.$gol1.'</span></td>';};
 					
 					echo '<td><b> - </b></td>';
 					
-					if($aconteceu == '0'){echo '<td>-</td>';}else{echo '<td>'.$gol2.'</td>';};
+					if($aconteceu == '0'){echo '<td><span class="label label-danger">-</span></td>';}else{echo '<td><span class="label label-success">'.$gol2.'</span></td>';};
 					
 					echo '<td>'.$nametime2.'</td>';
 					
@@ -485,7 +540,12 @@ include 'config.php';
 				}
 			     ?>
 			        </tbody>
-			      </table>
+			      </table></div>
+
+			    <h1>Comentários</h1>
+
+				<div class="comments" style="width:100%;background:#fff;padding:20px;"><div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+
 		</div>
 	</div>
 	<script src="<?php echo $siteurl ?>/js/tabela.js"></script>
